@@ -1,0 +1,27 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]  # Trigger on pushes to the "main" branch
+  pull_request:
+    branches: [ "main" ]  # Trigger on pull requests to "main"
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20  # Use the latest LTS version
+
+      - name: Install dependencies
+        run: npm ci         # Clean install for CI (uses package-lock.json)
+
+      - name: Run tests
+        run: npm test       # Executes "jest" as defined in package.json
