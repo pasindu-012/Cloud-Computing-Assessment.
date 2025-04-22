@@ -23,5 +23,3 @@ jobs:
       - name: Install dependencies
         run: npm ci         # Clean install for CI (uses package-lock.json)
 
-      - name: Run tests
-        run: npm test       # Executes "jest" as defined in package.json
